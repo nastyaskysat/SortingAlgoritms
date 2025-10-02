@@ -1,16 +1,18 @@
 #include <iostream>
 #include <vector>
 #include <chrono>
-#include "include/bubble_sort.h"
-#include "include/selection_sort.h"
 #include <random>
 #include <string>
 #include <stdexcept>
+#include "include/bubble_sort.h"
+#include "include/selection_sort.h"
+#include "include/insertion_sort.h"
 
 enum SORT_TYPE
 {
     BUBBLE_SORT,
     SELECTION_SORT,
+    INSERTION_SORT
 };
 
 void my_func(SORT_TYPE sort_type, std::vector<int> &data)
@@ -25,6 +27,9 @@ void my_func(SORT_TYPE sort_type, std::vector<int> &data)
         case (SELECTION_SORT):
         selection_sort(data.begin(), data.end());
         break;
+        case (INSERTION_SORT):
+        insertion_sort(data.begin(), data.end());
+        break;
     }
     auto end = std::chrono::steady_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
@@ -37,6 +42,8 @@ SORT_TYPE get_sort_type(std::string &sort_type)
         return BUBBLE_SORT;
     else if (sort_type == "SELECTION_SORT" || sort_type == "selection_sort")
         return SELECTION_SORT;
+    else if (sort_type == "INSERTION_SORT" || sort_type == "insertion_sort")
+    return INSERTION_SORT;
     throw std::invalid_argument("Invalid sort type");
 }
 int main()
