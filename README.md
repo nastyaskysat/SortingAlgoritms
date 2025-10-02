@@ -16,7 +16,7 @@ g++ --std=c++11 -o program main.cpp
 | Bubble Sort         | ✅              |
 | Selection Sort      | ✅              |
 | Insertion Sort      | ✅              |
-| Merge Sort          | ☐              |
+| Merge Sort          | ✅              |
 | Quick Sort          | ☐              |
 | Heap Sort           | ☐              |
 | Shell Sort          | ☐              |
