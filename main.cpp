@@ -8,13 +8,15 @@
 #include "include/selection_sort.h"
 #include "include/insertion_sort.h"
 #include "include/merge_sort.h"
+#include "include/red_black_sort.h"
 
 enum SORT_TYPE
 {
     BUBBLE_SORT,
     SELECTION_SORT,
     INSERTION_SORT,
-    MERGE_SORT
+    MERGE_SORT,
+    RED_BLACK_SORT
 };
 
 void my_func(SORT_TYPE sort_type, std::vector<int> &data)
@@ -35,6 +37,9 @@ void my_func(SORT_TYPE sort_type, std::vector<int> &data)
     case (MERGE_SORT):
         merge_sort(data.begin(), data.end());
         break;
+    case (RED_BLACK_SORT):
+        red_black_sort(data.begin(), data.end());
+        break;
     }
     auto end = std::chrono::steady_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
@@ -50,6 +55,8 @@ SORT_TYPE get_sort_type(std::string &sort_type)
     else if (sort_type == "INSERTION_SORT" || sort_type == "insertion_sort")
         return INSERTION_SORT;
     else if (sort_type == "MERGE_SORT" || sort_type == "merge_sort")
+        return MERGE_SORT;
+    else if (sort_type == "RED_BLACK_SORT" || sort_type == "red_black_sort")
         return MERGE_SORT;
     throw std::invalid_argument("Invalid sort type");
 }
